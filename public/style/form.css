@@ -1,0 +1,493 @@
+
+/* 
+*
+* HTML Structure
+*
+*/
+
+/* Select */
+
+/* 
+<label class="interact-field <disabled | info | succes | warning | error>">
+  <fieldset>
+    <select id="<options-choices>" >
+      <option value="0" selected></option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 2</option>
+    </select>
+    <legend>Options choices legende</legend>
+  </fieldset>
+</label>
+*/
+
+/* Input */
+
+/* 
+<label for="input-text" class="<disabled | info | succes | warning | error> interact-field">
+  <fieldset>
+    <input type="text" placeholder="Valeur" id="input-text"/>
+    <legend>Votre valeur</legend>
+  </fieldset>
+</label> 
+*/
+
+
+/* 
+*
+* Use Variables 
+*
+*/
+
+/*
+:root {
+  --color-primary: rgba(56, 149, 211, 1);
+  --color-primary-dark: rgba(34, 105, 148, 1);
+  --color-secondary: rgba(187, 187, 187, 1);
+  --color-secondary-dark: rgba(100, 100, 100, 1);
+  --color-secondary-xdark: rgb(60, 60, 60);
+  --color-success: rgba(34, 197, 94, 1);
+  --color-warning: hsl(30, 66%, 47%);
+  --color-error: rgba(229, 57, 53, 1);
+  --color-dark: rgb(47, 47, 47);
+  --color-light: rgb(240, 240, 240);
+  --font-family-body: 'Roboto', sans-serif;
+  --font-size-body: 1rem;
+  --font-size-body-mobile: 0.9rem;
+  --line-height-body: 1.6;
+  --icon-size-small: 16px;
+  --icon-size-medium: 24px;
+  --icon-size-large: 32px;
+  --padding-xxs: 0.25rem;
+  --padding-xs: 0.5rem;
+  --padding-s: 0.75rem;
+  --padding-m: 1rem;
+  --padding-l: 1.25rem;
+  --padding-xl: 1.5rem;
+  --margin-xs: 0.5rem;
+  --margin-s: 0.75rem;
+  --margin-m: 1rem;
+  --margin-l: 1.25rem;
+  --margin-xl: 1.5rem;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px;
+  --size-mobile: 400px;
+  --size-tablet: 800px;
+  --size-laptop: 1000px;
+  --size-desktop: 1400px;
+  --shadow-dark : 0 2px 10px rgba(0, 0, 0, 0.5);
+  --button-height: calc( var(--line-height-body) * var(--font-size-body) + var(--padding-s) * 2 + 2 * 1.6px);
+  --caret-down-url: url('/web/public/icons/caret-down.svg')
+}
+*/
+
+/* 
+@media screen and (max-width: 400px) {
+  :root{
+    --font-size-body: var(--font-size-body-mobile)
+  }
+} 
+*/
+
+/* 
+*
+* Common
+*
+*/
+.interact-field{
+  height: calc( var(--button-height) + var(--font-size-body) * var(--line-height-body) / 2 + 0.8px ) !important;
+  display: flex !important;
+  align-items: end !important;
+}
+
+fieldset {
+  appearance: none;
+  outline: none;
+
+  width: 100%;
+  max-height: calc(var(--button-height) + var(--line-height-body) *  var(--font-size-body) / 2 + 0.8px);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-secondary-dark);
+  border-radius: var(--border-radius-medium);
+  color: var(--color-light);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+fieldset:hover{
+  box-shadow: 0 1px 2px var(--color-primary);
+}
+
+fieldset:focus, fieldset:focus-within{
+
+  border-color: var(--color-primary);
+  box-shadow: 0 1px 2px var(--color-primary);
+}
+
+select,
+input,
+textarea {
+  background: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: var(--padding-s);
+  color: var(--color-light);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body) ;
+  transition: all var(--transition-speed) ease-in-out;
+  height: calc(var(--button-height));
+}
+
+fieldset:focus input,
+fieldset:focus-within input, 
+fieldset:focus textarea,
+fieldset:focus-within textarea,
+fieldset:focus textarea,
+fieldset:focus-within textarea,
+fieldset select,
+fieldset:focus select,
+fieldset:active select,
+fieldset:focus-within select,
+fieldset input:not(:placeholder-shown){
+  padding: 0 var(--padding-s);
+  padding-bottom: var(--padding-s);
+}
+
+legend,
+input::placeholder{
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body) ;
+  color: var(--color-light);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+legend{
+  padding: 0 0.25rem;
+  margin: 0 0.5rem;
+}
+
+/* 
+*
+* Animate legende 
+*
+*/
+
+fieldset legend{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+fieldset:focus legend,
+fieldset:focus-within legend,
+fieldset input:not(:placeholder-shown) ~ legend {
+  visibility: visible;
+  height: auto;
+  width: auto;
+  opacity: 1;
+  padding: 0 0.25rem;
+  margin: 0 0.5rem;
+}
+
+fieldset input::placeholder{
+  visibility: visible;
+}
+
+fieldset:focus input::placeholder,
+fieldset:focus-within input::placeholder{
+  visibility: hidden;
+}
+
+
+/* 
+*
+* Specifique 
+*
+*/
+
+/* Select */
+
+fieldset select {
+  appearance: none; 
+  width: 100%;
+  padding-right: 36px !important;
+  cursor: pointer;
+  background-image: var(--caret-down-url);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1 * 12px) 25%;
+  background-size: 12px;
+}
+
+fieldset select ~ legend{
+  visibility: visible;
+  height: auto;
+  width: auto;
+  opacity: 1;
+  padding: 0 0.25rem;
+  margin: 0 0.5rem;
+} 
+option {
+  background: var(--color-dark);
+  color: var(--color-light);
+  border-radius: var(--border-radius-medium);
+}
+option:checked  {
+  background: var(--color-secondary-xdark);
+}
+
+/* No interact select */
+.no-interact fieldset select {
+  background: none;
+  padding-right: var(--padding-s) !important;
+  cursor: auto;
+}
+
+
+/* Search */
+
+.search-bar{
+  margin: var(--margin-m) 0;
+}
+
+.search-bar label{
+  position: relative;
+}
+
+.search-bar label fieldset{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.search-bar .search-categorie{
+  border: none ;
+  outline: 0;
+  height: calc(var(--button-height) - var(--padding-m));
+  
+  border-radius: var(--border-radius-medium);
+  background-color: var(--color-primary-dark);
+  z-index: 1;
+  
+  margin-left: calc(var(--padding-m) / 2);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.search-bar:focus-within .search-categorie{
+  height: calc(var(--font-size-body) * var(--line-height-body) + var(--padding-xs));
+  padding-top: 0;
+}
+
+.search-bar .search-categorie fieldset {
+  height: 100%;
+}
+
+.search-bar .search-categorie fieldset select{
+  display: block;
+  height: 100%;
+  padding: 0 var(--padding-s);
+  background-position: calc(100% - 1 * 12px) 50%;
+}
+
+.search-bar .search-categorie fieldset,
+.search-bar .search-categorie fieldset:hover, 
+.search-bar .search-categorie fieldset:focus, 
+.search-bar .search-categorie fieldset:focus-within{ 
+  border: none ;
+  box-shadow: none;
+}
+
+.search-bar .search-option,
+.search-bar .search-action {
+  position: absolute;
+  height: calc(var(--button-height) - var(--padding-m));
+  bottom: 0;
+  transform: translate(0, calc( -100% + var(--button-height) / 2 + 1px));
+  right: calc( var(--padding-m) / 2);
+  z-index: 1;
+}
+
+.search-bar .search-option button,
+.search-bar .search-action button{
+  /* display: none; */
+  height: calc(var(--button-height) - var(--padding-m));
+  border-radius: var(--border-radius-medium);
+}
+
+.search-bar .search-option{
+  display: none;
+}
+
+.search-bar .search-action button{
+  aspect-ratio: 1 / 1;
+  padding: 0;
+}
+
+.search-action .button-icon-text .text{
+  display: none;
+}
+
+
+
+/* 
+*
+* Color variant 
+*
+*/
+
+/* Disabled */
+.disabled fieldset,
+fieldset.disabled
+{
+  border-color: var(--color-secondary-dark);
+  color:var(--color-secondary-dark);
+  cursor: not-allowed;
+}
+
+.disabled fieldset:hover,
+fieldset.disabled:hover
+{
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.disabled fieldset:focus,
+fieldset.disabled:focus,
+.disabled fieldset:focus-within,
+fieldset.disabled:focus-within
+{
+  border-color: var(--color-secondary-dark);
+  box-shadow: none;
+}
+
+.disabled legend,
+.disabled input::placeholder{
+  color: var(--color-secondary-dark);
+}
+
+.disabled input, 
+.disabled textarea,
+.disabled select{
+  cursor: not-allowed;
+  color: var(--color-secondary-dark);
+}
+
+/* Info */
+.info fieldset,
+fieldset.info
+{
+  border-color: var(--color-primary-dark);
+}
+
+.info fieldset:hover,
+fieldset.info:hover
+{
+  box-shadow: 0 1px 2px var(--color-primary-dark);
+}
+
+.info fieldset:focus,
+fieldset.info:focus,
+.info fieldset:focus-within,
+fieldset.info:focus-within
+{
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 1px 2px var(--color-primary-dark);
+}
+
+.info legend,
+.info input::placeholder{
+  color: var(--color-primary-dark);
+}
+
+/* Valid */
+.valid legend,
+.valid input::placeholder{
+  color: var(--color-success);
+} 
+
+.valid fieldset,
+fieldset.valid
+{
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.valid fieldset:hover,
+fieldset.valid:hover
+{
+  box-shadow: 0 1px 2px var(--color-success);
+  color: var(--color-success);
+}
+
+.valid fieldset:focus,
+fieldset.valid:focus,
+.valid fieldset:focus-within,
+fieldset.valid:focus-within
+{
+  border-color: var(--color-success);
+  box-shadow: 0 1px 2px var(--color-success);
+  color: var(--color-success);
+}
+
+/* Warning */
+.warning fieldset,
+fieldset.warning
+{
+  border-color: var(--color-warning);
+}
+
+.warning fieldset:hover,
+fieldset.warning:hover
+{
+  box-shadow: 0 1px 2px var(--color-warning);
+}
+
+.warning fieldset:focus,
+fieldset.warning:focus,
+.warning fieldset:focus-within,
+fieldset.warning:focus-within
+{
+  border-color: var(--color-warning);
+  box-shadow: 0 1px 2px var(--color-warning);
+}
+
+.warning legend,
+.warning input::placeholder{
+  color: var(--color-warning);
+} 
+
+/* Error */
+.error fieldset,
+fieldset.error
+{
+  border-color: var(--color-error);
+}
+
+.error fieldset:hover,
+fieldset.error:hover
+{
+  box-shadow: 0 1px 2px var(--color-error);
+}
+
+.error fieldset:focus,
+fieldset.error:focus,
+.error fieldset:focus-within,
+fieldset.error:focus-within
+{
+  border-color: var(--color-error);
+  box-shadow: 0 1px 2px var(--color-error);
+}
+
+.error legend,
+.error input::placeholder{
+  color: var(--color-error);
+}
+

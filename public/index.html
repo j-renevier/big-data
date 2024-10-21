@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL FOR BIG DATA</title>
+
+  <link rel="stylesheet" href="./style/variable.css"/>
+  <link rel="stylesheet" href="./style/reset.css"/>
+  <link rel="stylesheet" href="./style/loader.css"/>
+  <link rel="stylesheet" href="./style/button.css"/>
+  <link rel="stylesheet" href="./style/form.css"/>
+  <link rel="stylesheet" href="./style/style.css"/>
+  <link rel="stylesheet" href="./style/animation.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="loader-container">
+    <div class="loader"></div>
+  </div>
+
+
+  <header>
+    <h1>SQL FOR BIG DATA</h1>
+  </header>
+
+  <section class="stack-part">
+
+    <input type="checkbox" id="open-stack" checked>
+    <label for="open-stack" class="button-primary button-icon-m">
+      <svg class="icon angle-down" viewBox="0 0 200 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M88.2338 111.766C94.7416 118.274 105.31 118.274 111.818 111.766L195.119 28.4654C201.627 21.9576 201.627 11.3888 195.119 4.88091C188.611 -1.62697 178.042 -1.62697 171.535 4.88091L100 76.4155L28.4654 4.93296C21.9576 -1.57491 11.3888 -1.57491 4.88091 4.93296C-1.62697 11.4408 -1.62697 22.0096 4.88091 28.5175L88.1817 111.818L88.2338 111.766Z" fill="black"/>
+        </svg>
+
+    </label>
+
+    <h2>Stack : <span class="stack-description">DB 1</span></h2>
+    <div class="stack">
+      <div class="config">
+        <div class="select-container">
+          <label class="interact-field">
+            <fieldset>
+              <select>
+                <option value="0" selected>PostgreSQL + Elasticsearch</option>
+                <option value="1">Cassandra + Elasticsearch</option>
+                <option value="2">Hadoop + Elasticsearch</option>
+              </select>
+              <legend>Stack</legend>
+            </fieldset>
+          </label>
+        </div>
+        <div class="db-stack-info"></div>
+      </div>
+      <div class="perf"></div>
+    </div>
+  </section>
+
+  <main>
+    <div class="sidebar">
+      
+      <input type="checkbox" id="open-sidebar" checked>
+      <label for="open-sidebar" class="button-primary button-icon-m">
+        <svg class="icon angle-down" viewBox="0 0 200 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M88.2338 111.766C94.7416 118.274 105.31 118.274 111.818 111.766L195.119 28.4654C201.627 21.9576 201.627 11.3888 195.119 4.88091C188.611 -1.62697 178.042 -1.62697 171.535 4.88091L100 76.4155L28.4654 4.93296C21.9576 -1.57491 11.3888 -1.57491 4.88091 4.93296C-1.62697 11.4408 -1.62697 22.0096 4.88091 28.5175L88.1817 111.818L88.2338 111.766Z" fill="black"/>
+        </svg>
+      </label>
+      
+      <input type="radio" name="select-tab" id="select-tab-tree">
+      <input type="radio" name="select-tab" id="select-tab-search" checked>
+      
+      <nav class="tabs-container">
+        <ul class="tabs">
+          <li class="tab nav-tab-search"><label for="select-tab-search" id="tab-search">Rechercher</label></li>
+          <li class="tab nav-tab-tree"><label for="select-tab-tree">Arborescence</label></li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-content">
+        <section class="tab-tree">
+          <div class="tree">
+            <h3>Arborescence</h3>
+          </div>
+        </section>
+
+        <section class="tab-search">
+          <div class="search">
+            <h3>Rechercher</h3>
+            <form id="search-form">
+              <div class="search-container">
+                <div class="search-bar">
+                  <label for="input-text" class="interact-field">
+                    <fieldset>
+                      <div class="search-categorie">
+                        <fieldset>
+                          <select>
+                            <option value="0" selected>All</option>
+                            <option value="1">Folder</option>
+                            <option value="2">File</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                      <input type="text" placeholder="Rechercher..." id="search-input" autocomplete="off"/>
+                      <div class="search-option"></div>
+                      <div class="search-action">
+                        <button type="button" class="button-primary button-icon-text animate-border">
+                          <svg viewBox="0 0 200 200" class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M162.5 81.25C162.5 99.1797 156.68 115.742 146.875 129.18L196.328 178.672C201.211 183.555 201.211 191.484 196.328 196.367C191.445 201.25 183.516 201.25 178.633 196.367L129.18 146.875C115.742 156.719 99.1797 162.5 81.25 162.5C36.3672 162.5 0 126.133 0 81.25C0 36.3672 36.3672 0 81.25 0C126.133 0 162.5 36.3672 162.5 81.25ZM81.25 137.5C88.6369 137.5 95.9514 136.045 102.776 133.218C109.601 130.391 115.801 126.248 121.025 121.025C126.248 115.801 130.391 109.601 133.218 102.776C136.045 95.9514 137.5 88.6369 137.5 81.25C137.5 73.8631 136.045 66.5486 133.218 59.7241C130.391 52.8995 126.248 46.6985 121.025 41.4752C115.801 36.2519 109.601 32.1086 102.776 29.2818C95.9514 26.455 88.6369 25 81.25 25C73.8631 25 66.5486 26.455 59.7241 29.2818C52.8995 32.1086 46.6985 36.2519 41.4752 41.4752C36.2519 46.6985 32.1086 52.8995 29.2818 59.7241C26.4549 66.5486 25 73.8631 25 81.25C25 88.6369 26.4549 95.9514 29.2818 102.776C32.1086 109.601 36.2519 115.801 41.4752 121.025C46.6985 126.248 52.8995 130.391 59.7241 133.218C66.5486 136.045 73.8631 137.5 81.25 137.5Z" fill="#F0F0F0"/>
+                          </svg>
+                          <p class="text">Rechercher</p>
+                        </button>
+                      </div>
+                      <legend>Rechercher</legend>
+                    </fieldset>
+                  </label> 
+                </div>
+                <div class="search-help">
+                </div>
+                <div class="search-data">
+                  <div class="recommendation">
+                  </div>
+                  <div class="before-search">
+                  </div>
+                  <div class="suggest">
+                  </div>
+                </div>
+              </div>
+
+              <div class="sort-container">
+                <h4>Trier</h4>
+                <div class="sort">
+                  <button type="button" class="add-sort button-primary button-icon-text">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M115.385 15.3846C115.385 6.875 108.51 0 100 0C91.4904 0 84.6154 6.875 84.6154 15.3846V84.6154H15.3846C6.875 84.6154 0 91.4904 0 100C0 108.51 6.875 115.385 15.3846 115.385H84.6154V184.615C84.6154 193.125 91.4904 200 100 200C108.51 200 115.385 193.125 115.385 184.615V115.385H184.615C193.125 115.385 200 108.51 200 100C200 91.4904 193.125 84.6154 184.615 84.6154H115.385V15.3846Z" fill="#f0f0f0"/>
+                      </svg>
+                    <p class="text">Trie</p>
+                  </button>
+                  <!-- TO REMOVE: START  -->
+                  <div class="sort-line">
+                    <div class="sort-value">
+                      <label class="interact-field">
+                        <fieldset>
+                          <select id="sort-value">
+                            <option>Libellé</option>
+                            <option>Label</option>
+                            <option>Description</option>
+                            <option>Date de création</option>
+                            <option>Date de mise à jour</option>
+                          </select>
+                          <legend>Trier par :</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <div class="sort-type">
+                      <label class="interact-field no-interact">
+                        <fieldset>
+                          <select id="sort-value-type">
+                            <option value="number" class="number">Nombre</option>
+                            <option value="text" class="text">Texte</option>
+                            <option value="date" class="date">Date</option>
+                          </select>
+                          <legend>Type :</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <div class="sort-order">
+                      <label class="interact-field">
+                        <fieldset>
+                          <select id="sort-value">
+                            <option value="asc" class="sort-order-asc">
+                              <span class="number">Croissant</span> |
+                              <span class="text">A - Z</span> |
+                              <span class="date">Plus récent - Plus vieux</span>
+                            </option>
+                            <option value="desc" class="sort-order-dec">
+                              <span class="number">Décroissant</span> |
+                              <span class="text">Z - A</span> |
+                              <span class="date">Plus vieux - Plus récent</span>
+                            </option>
+                          </select>
+                          <legend>Ordonné par :</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <button type="button" class="remove-sort button-error button-icon-s">
+                      <svg viewBox="0 0 175 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+                        <path d="M52.8125 6.91406L50 12.5H12.5C5.58594 12.5 0 18.0859 0 25C0 31.9141 5.58594 37.5 12.5 37.5H162.5C169.414 37.5 175 31.9141 175 25C175 18.0859 169.414 12.5 162.5 12.5H125L122.187 6.91406C120.078 2.65625 115.742 0 111.016 0H63.9844C59.2578 0 54.9219 2.65625 52.8125 6.91406ZM162.5 50H12.5L20.7813 182.422C21.4063 192.305 29.6094 200 39.4922 200H135.508C145.391 200 153.594 192.305 154.219 182.422L162.5 50Z" fill="#F0F0F0"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <!-- TO REMOVE: STOP -->
+                </div>
+              </div>
+
+              <div class="filter-container">
+                <h4>Filtrer</h4>
+                <div class="filter">
+                  <!-- Filtres dynamiques -->
+                </div>
+              </div>
+
+              <div class="pagination-container">
+                <h4>Pagination</h4>
+                <div class="pagination">
+                  <div class="page">
+                    <div class="first-page">
+                      <label for="first-page" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="first-page" min="1" step="1" value="155555" readonly/>
+                          <legend>Première</legend>
+                        </fieldset>
+                      </label> 
+                    </div>
+                    <div class="before-page">
+                      <button type="button" class="button-outline-secondary">
+                        <svg height="16" width="16" viewBox="0 0 175 200"></svg>
+                      </button>
+                    </div>
+                    <div class="current-page">
+                      <label for="current-page" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="current-page" min="1" step="1" value="1" />
+                          <legend>Courante</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <div class="after-page">
+                      <button type="button" class="button-outline-secondary">
+                        <svg height="16" width="16" viewBox="0 0 175 200"></svg>
+                      </button>
+                    </div>
+                    <div class="last-page">
+                      <label for="last-page" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="last-page" min="1" step="1" value="1" readonly />
+                          <legend>Dernière</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="data">
+                    <div class="offset">
+                      <label for="offset" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="offset" min="0" step="1" value="0" placeholder="Offset"/>
+                          <legend>Décalage</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <div class="limit">
+                      <label for="limit" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="limit" min="1" step="1" value="100" placeholder="Limit" />             
+                          <legend>Limite</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                    <div class="total">
+                      <label for="total" class="interact-field">
+                        <fieldset>
+                          <input type="number" id="total" min="0" step="1" value="0" readonly placeholder="Total" />    
+                          <legend>Total</legend>
+                        </fieldset>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-container">
+                <div class="more-opt-container">
+                  <input type="checkbox" id="more-opt" checked>
+                  <label for="more-opt">
+                    <button type="button" class="button-outline-primary icon-text">
+                      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M115.385 15.3846C115.385 6.875 108.51 0 100 0C91.4904 0 84.6154 6.875 84.6154 15.3846V84.6154H15.3846C6.875 84.6154 0 91.4904 0 100C0 108.51 6.875 115.385 15.3846 115.385H84.6154V184.615C84.6154 193.125 91.4904 200 100 200C108.51 200 115.385 193.125 115.385 184.615V115.385H184.615C193.125 115.385 200 108.51 200 100C200 91.4904 193.125 84.6154 184.615 84.6154H115.385V15.3846Z" fill="#f0f0f0"/>
+                        </svg>
+                      <p class="text">Plus d'options</p>
+                    </button>
+                  </label>
+                </div>
+
+                <div class="reset-container">
+                  <button type="reset" id="reset" class="button-warning">Réinitialiser</button>
+                </div>
+
+                <div class="submit-container">
+                  <button type="submit" id="submit">Rechercher</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="add-data">
+        <div>
+          <button>Ajouter</button>
+        </div>
+      </section>
+
+      <section class="show-data">
+        <div class="data">
+          <!-- TO REMOVE: START -->
+          <div class="data-header">
+            <div class="libelle-container">
+              <p class="libelle">Libellé</p>
+            </div>
+            <div class="label-container">
+              <p class="label">Label</p>
+            </div>
+            <div class="description-container">
+              <p class="description">Description</p>
+            </div>
+            <div class="create-date-container">
+              <p class="create-date">Date de création</p>
+            </div>
+            <div class="update-date-container">
+              <p class="update-date">Date de mise à jour</p>
+            </div>
+          </div>
+
+          <div class="data-line">
+            <div class="libelle-container">
+              <p class="libelle">XXXX</p>
+            </div>
+            <div class="label-container">
+              <p class="label">XXXX</p>
+            </div>
+            <div class="description-container">
+              <p class="description">XXXXX</p>
+            </div>
+            <div class="create-date-container">
+              <p class="create-date">XXXXXX</p>
+            </div>
+            <div class="update-date-container">
+              <p class="update-date">XXXXX</p>
+            </div>
+            <div class="update-container">
+              <button class="update">Modifier</button>
+            </div>
+            <div class="delete-container">
+              <button type="button" class="delete button-error button-icon-s" title="supprimer">
+                <svg viewBox="0 0 175 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+                  <path d="M52.8125 6.91406L50 12.5H12.5C5.58594 12.5 0 18.0859 0 25C0 31.9141 5.58594 37.5 12.5 37.5H162.5C169.414 37.5 175 31.9141 175 25C175 18.0859 169.414 12.5 162.5 12.5H125L122.187 6.91406C120.078 2.65625 115.742 0 111.016 0H63.9844C59.2578 0 54.9219 2.65625 52.8125 6.91406ZM162.5 50H12.5L20.7813 182.422C21.4063 192.305 29.6094 200 39.4922 200H135.508C145.391 200 153.594 192.305 154.219 182.422L162.5 50Z" fill="#F0F0F0"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- TO REMOVE: STOP -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Templates -->
+  <template id="sort-line-template">
+    <div class="sort-line">
+      <div class="sort-value">
+        <label class="interact-field">
+          <fieldset>
+            <select id="sort-value">
+              <option>Libellé</option>
+              <option>Label</option>
+              <option>Description</option>
+              <option>Date de création</option>
+              <option>Date de mise à jour</option>
+            </select>
+            <legend>Trier par :</legend>
+          </fieldset>
+        </label>
+      </div>
+      <div class="sort-type">
+        <label class="interact-field no-interact">
+          <fieldset>
+            <select id="sort-value-type">
+              <option value="number" class="number">Nombre</option>
+              <option value="text" class="text">Texte</option>
+              <option value="date" class="date">Date</option>
+            </select>
+            <legend>Type :</legend>
+          </fieldset>
+        </label>
+      </div>
+      <div class="sort-order">
+        <label class="interact-field">
+          <fieldset>
+            <select id="sort-value">
+              <option value="asc" class="sort-order-asc">
+                <span class="number">Croissant</span> |
+                <span class="text">A - Z</span> |
+                <span class="date">Plus récent - Plus vieux</span>
+              </option>
+              <option value="desc" class="sort-order-dec">
+                <span class="number">Décroissant</span> |
+                <span class="text">Z - A</span> |
+                <span class="date">Plus vieux - Plus récent</span>
+              </option>
+            </select>
+            <legend>Ordonné par :</legend>
+          </fieldset>
+        </label>
+      </div>
+      <button type="button" class="delete-sort button-error button-icon-m">
+        <svg viewBox="0 0 175 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+          <path d="M52.8125 6.91406L50 12.5H12.5C5.58594 12.5 0 18.0859 0 25C0 31.9141 5.58594 37.5 12.5 37.5H162.5C169.414 37.5 175 31.9141 175 25C175 18.0859 169.414 12.5 162.5 12.5H125L122.187 6.91406C120.078 2.65625 115.742 0 111.016 0H63.9844C59.2578 0 54.9219 2.65625 52.8125 6.91406ZM162.5 50H12.5L20.7813 182.422C21.4063 192.305 29.6094 200 39.4922 200H135.508C145.391 200 153.594 192.305 154.219 182.422L162.5 50Z" fill="#F0F0F0"/>
+        </svg>
+      </button>
+    </div>
+  </template>
+
+  <template id="data-header-template">
+    <div class="data-header">
+      <div class="libelle-container">
+        <p class="libelle">Libellé</p>
+      </div>
+      <div class="label-container">
+        <p class="label">Label</p>
+      </div>
+      <div class="description-container">
+        <p class="description">Description</p>
+      </div>
+      <div class="create-date-container">
+        <p class="create-date">Date de création</p>
+      </div>
+      <div class="update-date-container">
+        <p class="update-date">Date de mise à jour</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="data-line-template">
+    <div class="data-line">
+      <div class="libelle-container">
+        <p class="libelle">XXXX</p>
+      </div>
+      <div class="label-container">
+        <p class="label">XXXX</p>
+      </div>
+      <div class="description-container">
+        <p class="description">XXXXX</p>
+      </div>
+      <div class="create-date-container">
+        <p class="create-date">XXXXXX</p>
+      </div>
+      <div class="update-date-container">
+        <p class="update-date">XXXXX</p>
+      </div>
+      <div class="update-container">
+        <button class="update">Modifier</button>
+      </div>
+      <div class="delete-container">
+        <button type="button" class="delete button-error button-icon-s" title="supprimer">
+          <svg viewBox="0 0 175 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+            <path d="M52.8125 6.91406L50 12.5H12.5C5.58594 12.5 0 18.0859 0 25C0 31.9141 5.58594 37.5 12.5 37.5H162.5C169.414 37.5 175 31.9141 175 25C175 18.0859 169.414 12.5 162.5 12.5H125L122.187 6.91406C120.078 2.65625 115.742 0 111.016 0H63.9844C59.2578 0 54.9219 2.65625 52.8125 6.91406ZM162.5 50H12.5L20.7813 182.422C21.4063 192.305 29.6094 200 39.4922 200H135.508C145.391 200 153.594 192.305 154.219 182.422L162.5 50Z" fill="#F0F0F0"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <template id="tooltip-template">
+    <div class="tooltip">
+      <div class="header">
+        <div class="title-container">
+          <div class="title-icon">/!\</div>
+          <p class="title">INFO</p>
+        </div>
+        <div class="action-container">
+          <div class="close-icon">x</div>
+          <div class="detail-icon">v</div>
+        </div>
+      </div>
+      <div class="detail-container">
+        <p class="detail">More infos</p>
+      </div>
+    </div>
+  </template>
+
+  <template id="and-template">
+    <div class="and">
+      <p>ET</p>
+    </div>
+  </template>
+
+</body>
+</html>
